@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { db } from './lib/firebase';
+import { db, storage } from './lib/firebase';
 import Post from './components/Post';
 export type UserType = {
   id: string;
