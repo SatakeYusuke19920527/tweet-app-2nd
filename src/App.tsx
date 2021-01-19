@@ -10,6 +10,7 @@ export type UserType = {
 
 const App: React.FC<{}> = () => {
   const [data, setData] = useState<UserType[]>([]);
+  const [item, setItem] = useState<File | null>(null);
   useEffect(() => {
     const unSub = db.collection('posts').onSnapshot(function (querySnapshot) {
       setData(
@@ -40,8 +41,17 @@ const App: React.FC<{}> = () => {
         console.error('Error writing document: ', error);
       });
   };
+  const handleInput = (file: any) => {
+    console.log(file[0]);
+    setItem(file[0]);
+  };
+  const uploadFile = async () => {
+    await storage.ref(`image`).child(item?.name!).put(item!);
+  };
   return (
     <div>
+      <input type="file" onChange={(e) => handleInput(e.target.files)} />
+      <button onClick={uploadFile}>file upload</button>
       <h1>button</h1>
       <button onClick={handleClick}>button</button>
       <h1>data</h1>
