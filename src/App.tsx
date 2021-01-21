@@ -5,6 +5,7 @@ import firebase from 'firebase/app';
 import Post from './components/Post';
 import { Avatar } from '@material-ui/core';
 import { UserType } from './types/UserType';
+import { Link } from 'react-router-dom';
 
 const App: React.FC<{}> = () => {
   const [data, setData] = useState<UserType[]>([]);
@@ -101,6 +102,7 @@ const App: React.FC<{}> = () => {
 
   return (
     <div>
+      <Link to="/line">lineへ</Link>
       <input type="file" onChange={(e) => handleInput(e.target.files)} />
       <button onClick={uploadFile}>file upload</button>
       <h1>button</h1>
