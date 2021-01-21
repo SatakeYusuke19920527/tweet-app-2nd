@@ -4,11 +4,7 @@ import { db, storage } from './lib/firebase';
 import firebase from 'firebase/app';
 import Post from './components/Post';
 import { Avatar } from '@material-ui/core';
-export type UserType = {
-  id: string;
-  name: string;
-  state: string;
-};
+import { UserType } from './types/UserType';
 
 const App: React.FC<{}> = () => {
   const [data, setData] = useState<UserType[]>([]);
@@ -102,7 +98,7 @@ const App: React.FC<{}> = () => {
       }
     );
   };
-  console.log(data1, 'hello ');
+
   return (
     <div>
       <input type="file" onChange={(e) => handleInput(e.target.files)} />
